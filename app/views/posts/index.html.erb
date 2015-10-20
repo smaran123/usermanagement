@@ -1,0 +1,33 @@
+    <center>
+  
+        
+        
+<h1>Posts</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Published On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @posts.each do |p| %>
+      <% present(p) do |post| %>
+        <tr>
+          <td><%= post.id %></td>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+          <td><%= post.publication_status %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+        
+        
+        
+        
+</center>

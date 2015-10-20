@@ -1,9 +1,19 @@
-Dashboard Page
-<div id="container">
-<h1>Task Status Page</h1>
-<% @user.tasks.each do |t| %>
-<%=  t.status%>
-<%=link_to "EditStatus",  edit_status_path(t) %>
-<%end%>
+    <center>
+  
+        
+       
 
+<% if @user.tasks.present?%>
+<h1>Task Status</h1>
+<% @user.tasks.each do |t| %>
+<%=t.status%>
+<div>
+
+<%=link_to "EditStatus",  edit_status_path(t) %>
 </div>
+<%end%>
+<%else%>
+<h2> No Tasks assigned to you </h2>
+<%end%> 
+        
+</center>

@@ -1,0 +1,41 @@
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<%= form_for(@user,:url => @user.new_record? ? create_user_path : user_path(@user), :html => { :multipart => true }) do |f| %>
+<%#=  form_for(@worker, :url => @worker.new_record? ? create_worker_path : worker_path(@worker), :html => { :multipart => true }) do |f|%>
+<div class="field">
+<%= f.label :name %>
+<%= f.text_field :name , class: "form-control"%>
+</div><br/>
+<div class="field">
+<%= f.label :email %>
+<%= f.text_field :email, class: "form-control" %>
+</div><br/>
+<div class="field">
+<%= f.label :JoinDate %>
+<%= f.text_field :join_date, :class => "form-control datepicker"%>
+</div><br/>
+<div class="field">
+<%= f.label :mobile_no %>
+<%= f.text_field :mobile_no, class: "form-control"%>
+</div><br/>
+<div class="form-action">
+<%= f.submit %>
+</div>
+<%#=f.submit :class=>"btn btn-default"%>
+<%end%>
+
+</div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+</script>
+
+
+
+
+
+

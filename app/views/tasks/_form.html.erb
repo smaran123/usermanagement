@@ -1,0 +1,86 @@
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+
+  <%= form_for @task do |f| %>
+    <% if @task.errors.any? %>
+    <div class="alert alert-danger">
+       <h2>
+          <%= pluralize(@task.errors.count, "error")%>
+              prohibited this task from being saved:  
+          </h2>
+          <ul>
+            <%= @task.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>   
+    </div>
+  <% end %>
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <%= f.label :name, class: "control-label" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <%= f.label :TimeRequired %>
+        <%= f.text_field :time_required, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <%= f.label :CompletionDate %>
+        <%= f.text_field :completion_date, class: "form-control datepicker" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <%= f.label :AssignedTo %>
+        <%= f.select :user_id, options_for_select([["select","select"] ] + User.where(:admin => false).map{ |i| [i.name, i.id]}) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <%= f.label :status %>
+        <%= f.select :status, options_for_select([["Open","Open"],["Pending","Pending"],["Stuck","Stuck"],["Completed","Completed"]], :selected => f.object.status) %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <%= f.submit "Save", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker(
+       {
+           	format: 'yyyy-mm-dd',
+
+          todayHighlight: true,
+          todayBtn: 'linked',
+          autoclose: true
+
+        }     );
+  });
+</script>
+
+
+
+
+

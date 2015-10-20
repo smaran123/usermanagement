@@ -1,0 +1,47 @@
+    <div style="float:right">
+        <% if current_user.admin==true %>
+        <i class="icon-normal-plus">
+    <%= link_to "New User", new_user_path, :class => "btn btn-default"%></i>
+        <%end%>
+</div>
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<table class="table table-stripped">
+
+ <tr>
+    <th>UserName</th>    
+    <th>Email</th>
+     <th>MobileNumber</th>    
+     <th>Actions</th>
+  </tr>
+  <% @users.each do |user| %>
+  
+  <tr>
+      
+      <td><%= user.name %> </td> 
+      <td><%= user.email %> </td> 
+      <td><%= user.mobile_no %> </td>
+      <td><%= link_to "show", user_path(user),:class=>"btn btn-info"%>|
+          <% if current_user.admin==true  %>
+<%= link_to "Edit", edit_user_path(user),:class=>"btn btn-warning" %>  |
+<% if user.is_active == false %>
+    <%=link_to "UnBlack", update_unblock_user_path(user), :method=>:put,:data=>{:confirm=>"are u sure?"},:class=>"btn btn-danger"%>
+         <%else%>
+      <%=link_to "Black", update_block_user_path(user), :method=>:put,:data=>{:confirm=>"are u sure?"},:class=>"btn btn-danger"%>
+
+<%end%>
+
+
+<%= link_to "Delete", user_path(user),:method => :delete, :data => {:confirm => "sre you sure" },:class=>"btn btn-danger"%>  
+      <%end%></td> 
+      
+      
+      
+      
+      
+  </tr>
+<% end %>
+</table>
+</div>
+</div>

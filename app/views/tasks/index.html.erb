@@ -1,0 +1,46 @@
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+  <h3>Tasks</h3>
+  <div style="float:right;">
+<%= link_to "New Task", new_task_path %>
+</div>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Task No</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>TimeRequired</th>
+      <th>Assigned to</th>
+      <th>Status</th>
+      <th>CompletionDate</th>
+      <td>&nbsp;</td>
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.id %></td>
+        <td><%=  task.name %></td>
+        <td><%=  task.description %></td>
+        <td>
+        <%=  task.time_required %>
+             </td>
+        <td>
+        <% if task.user.present? %>
+               <%=  task.user.name %>
+                <%end%>
+        </td>
+        <td><%= task.status %></td>
+        <td><%= task.completion_date.strftime("%d-%m-%Y") if task.completion_date.present? %>
+        
+        </td>
+                <td>
+        <%= link_to "Edit", edit_task_path(task), class: "btn btn-primary" %>
+        <%= link_to "Show", task_path(task), class: "btn btn-primary" %>
+        <%= link_to "Destroy", task_path(task), :method => :delete, :data => {:confirm => "are you sure?"},class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+</div>

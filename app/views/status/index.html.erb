@@ -1,0 +1,9 @@
+Dashboard Page
+<div id="container">
+<h1>Task Status Page</h1>
+<% @user.tasks.each do |t| %>
+<%=  t.status%>
+<%=link_to "EditStatus",  edit_status_path(t) %>
+<%end%>
+
+</div>

@@ -1,0 +1,20 @@
+<%= form_for @user, :url => profile_path(@user), :method => "PUT" do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :MobileNumber %>
+<%= f.text_field :mobile_no %>
+<%= f.label :image %>
+<%= f.file_field :image %>
+<%= f.label :join_date %>
+<%= f.text_field :join_date, :class => "datepicker" %>
+<%= f.submit%>
+<%end%>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+</script>
+
+

@@ -1,11 +1,15 @@
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
 <h2>User Profile</h2>
-<%= @user.name %>
+UserName:<%= @user.name %>
+<br/>
 
-<%= @user.mobile_no %>
-
-<%= image_tag @user.image%>
-
-<%= @user.join_date %>
-
-
+Mobile Number:<%= @user.mobile_no %>
+<br/>
+Image:<%= image_tag @user.image%>
+<br/><br/>
+JoinDate: <%= @user.join_date %>
+<br/><br/>
 <%= link_to "Edit", edit_profile_path(@user) %>
+
+</div></div>

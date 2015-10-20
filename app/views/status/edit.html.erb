@@ -2,8 +2,9 @@
 <div class="col-md-6 col-md-offset-3">
 <%= form_for @task, :url => status_path(@task), :method => "PUT" do |f| %>
 <%= f.label :status %>
-<%= f.select :status, options_for_select( [["Pending","Pending"],["Open","Open"],["Stuck","Stuck"],["close","close"]], :selected => f.object.status) %>
-<%= f.submit %>
+<%= f.select :status, options_for_select( [["Pending","Pending"],["Open","Open"],["Stuck","Stuck"],["close","close"]], :selected => f.object.status), :id => "slect" %>
+<br/>
+  <%= f.submit %>
 <%end%>
 </div>
 </div>

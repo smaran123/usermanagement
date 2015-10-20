@@ -3,9 +3,9 @@
         
        
 
-<% if @user.tasks.present?%>
+<% if @task.present?%>
 <h1>Task Status</h1>
-<% @user.tasks.each do |t| %>
+<% @task.each do |t| %>
 <%=t.status%>
 <div>
 

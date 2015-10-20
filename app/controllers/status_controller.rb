@@ -2,7 +2,7 @@ class StatusController < ApplicationController
 
   def index
       @user = current_user
-    @task = current_user.tasks
+    @task = @user.tasks
     
   end
   

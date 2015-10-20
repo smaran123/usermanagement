@@ -30,4 +30,14 @@ class ApplicationController < ActionController::Base
 
   end
 
+  
+  def current_worker
+    @current_worker ||= Worker.find(session[:worker_id]) if session[:worker_id]
+  end
+  helper_method :current_worker
+  
+  
+  
+  
+  
 end

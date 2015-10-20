@@ -27,6 +27,19 @@
           <li><%=link_to "SignIn", new_user_session_path%></li>
           <li><%=link_to "SignUp", new_user_registration_path%></li>
           <%end%>
+          
+         
+          
+  <% if current_worker %>
+    Signed in as <strong><%= current_worker.name %></strong>!
+    <li> <%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+  <% else %>
+     <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+  <% end %>
+   
+          
+          
+          
         </ul>
       </div>
     </div>

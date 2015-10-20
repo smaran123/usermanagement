@@ -14,6 +14,11 @@ resources :users do
 end
 resources :home, :only=>[:index]
 resources :profiles
-resources :status
+resources :status 
+
+   get 'auth/:provider/callback', to: 'sessions#create'
+
+    get 'auth/failure', to: redirect('/')
+    get 'signout', to: 'sessions#destroy', as: 'signout'
 end
 

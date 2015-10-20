@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014103326) do
+ActiveRecord::Schema.define(version: 20151020073634) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -52,5 +52,15 @@ ActiveRecord::Schema.define(version: 20151014103326) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "workers", force: :cascade do |t|
+    t.string   "name",             limit: 255
+    t.string   "phone_no",         limit: 255
+    t.string   "provider",         limit: 255
+    t.string   "uid",              limit: 255
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
 end
